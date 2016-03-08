@@ -43,7 +43,7 @@ public class SingInGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public SingInGUI() {
-		_handler= new client_handler();
+		_handler= client_handler.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -91,5 +91,14 @@ public class SingInGUI extends JFrame {
 		});
 		btn_Play.setBounds(295, 222, 117, 25);
 		pnl_singIn.add(btn_Play);
+		
+		JButton btn_write = new JButton("write");
+		btn_write.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				_handler.write(txt_username.getText());
+			}
+		});
+		btn_write.setBounds(160, 222, 117, 25);
+		pnl_singIn.add(btn_write);
 	}
 }

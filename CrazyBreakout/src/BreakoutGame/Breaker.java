@@ -10,19 +10,25 @@ public class Breaker extends Actor
 {
   private double speed;
   private BreakoutGame gg;
+  private int _number;
   private Random _ran;
   private int _randomInt;
 
-  public Breaker(BreakoutGame gg)
+  public Breaker(BreakoutGame gg, int pNumber)
   {
     super("/home/vargas/Documentos/sprites/ball.png",4);
     this.gg = gg;
+    _number = pNumber;
     _ran  = new Random();
     _randomInt = _ran.nextInt(3);
     show(_randomInt);
     
   }
-
+  
+  public int getNumber(){
+	  return _number;
+  }
+  
   public void act()
   {
     double dir = getDirection();

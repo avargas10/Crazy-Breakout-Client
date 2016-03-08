@@ -17,7 +17,7 @@ public class client_Socket extends Thread {
 	private client_Sender _sender;
 
 	private client_Socket(){
-		_sender = new client_Sender();
+		_sender = client_Sender.getInstance();
 	}
 	
 	public static client_Socket getInstance(){
@@ -50,6 +50,7 @@ public class client_Socket extends Thread {
 		while (true) {
 			try {
 				_sender.init_Protocol(this.clientReader());
+				System.out.println(clientReader());
 				
 				
 				

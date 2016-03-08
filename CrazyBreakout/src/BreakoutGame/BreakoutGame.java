@@ -4,6 +4,7 @@ package BreakoutGame;
 
 import ch.aplu.jgamegrid.*;
 import comunication_Handler.client_Sender;
+import comunication_Handler.client_handler;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -22,41 +23,39 @@ import Lists.Double_Linked_List;
 public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCollisionListener
 {
   private int points;
-  private static final int TIMELIMIT = 120; //in seconds
-  private static final int STARTSPEED = 35;
+  private int TIMELIMIT ; //in seconds
+  private int STARTSPEED ;
   private long startTime;
-  private BreakerBar bar;
   private int _ballCounter;
   private Double_Linked_List<Actor> _breakers;
   private Double_Linked_List<Actor> _actors;
   private Double_Linked_List<Actor> _bars;
   private Double_Linked_List<Actor> _bricks;
   private boolean gameOver, startingStage;
-  private static final Location startLocation = new Location(400, 463);
 
-  public BreakoutGame()
+
+  public BreakoutGame(int pWidth, int pHeigth,int pTimeLimit, int pStartSpeed)
   {
-    super(800, 550, 1, false);
+    super(pWidth, pHeigth, 1, false);
+    TIMELIMIT = pTimeLimit;
+    STARTSPEED = pStartSpeed;
     _breakers= new Double_Linked_List();
     _actors = new Double_Linked_List();
     _bars = new Double_Linked_List();
     _bricks = new Double_Linked_List();
     getBg().setBgColor(Color.black);   
-    reset();
-    setSimulationPeriod(STARTSPEED);
-    for (int i = 1; i <= 3; i++)
-    {
-      LevelButton lvlBtn = new LevelButton(i);
-      addActor(lvlBtn, new Location(i * 110 - 50, nbVertCells - 25));
-      if (i == 1) //start with level 1
-        lvlBtn.show(1);
-    }
-    addMouseListener(this, GGMouse.move | GGMouse.lClick);
-    getBg().setPaintColor(Color.red);
-    show();
-    doRun();
+    initGame();
   }
 
+  public void initGame(){
+	    reset();
+	    setSimulationPeriod(STARTSPEED);
+	    addMouseListener(this, GGMouse.move | GGMouse.lClick);
+	    getBg().setPaintColor(Color.red);
+	    show();
+	    doRun();
+  }
+  
   public void act()
   {
     if (!(startingStage || gameOver))
@@ -75,8 +74,9 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
     setTitle("Breaker-Game, start by clicking. Break as many bricks as possible in " + TIMELIMIT + " seconds");
     deleteAll(_breakers);
     deleteAll(_bars);
-    newBar(400,480);
-    newBall(400, 430);
+    client_handler.getInstance().newBall();
+    client_handler.getInstance().newBar();
+    
     getBg().clear();
     _ballCounter = 0;
     points = 0;
@@ -107,9 +107,9 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
 
       case GGMouse.move:
         _bars.getNode(0).get_Data().setX(mouse.getX());
-        if (startingStage)
-          _breakers.getNode(0).get_Data().setX(mouse.getX());
-        break;
+       // if (startingStage)
+         // _breakers.getNode(0).get_Data().setX(mouse.getX());
+        //break;
     }
     return true;
   }
@@ -125,10 +125,8 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
     { //hit brick
       actor1.setDirection(reflectPhysicallyCorrect(actor1.getLocation(), actor2.getLocation(), dir));
       points += 10;
-      if(points % 60 == 0){
-    	  newBall(400, 430);
-    	  
-      }
+      if(points%40==0){
+      client_handler.getInstance().newBall();}
       if (getActors(Brick.class).size() == 0)
         gameOver();
       else
@@ -177,8 +175,8 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
     setTitle("Game Over! " + points + " points " + " in " + elapsedTime + " seconds. Reset by clicking.");
   }
   
-  public void newBall(int pX,int pY){
-	  Breaker ball = new Breaker(this);
+  public void newBall(int pX,int pY, int pNumber){
+	  Breaker ball = new Breaker(this,pNumber);
 	  ball.setCollisionCircle(new Point(0, 0), 10);
 	  addActor(ball, new Location(pX, pY));
 	  ball.addActorCollisionListener(this);
@@ -208,8 +206,8 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
 	  }
   }
   
-  public void newBar(int pX,int pY){
-	   BreakerBar Bar = new BreakerBar();
+  public void newBar(int pX,int pY, int pNumber){
+	   BreakerBar Bar = new BreakerBar(pNumber);
 	   addActor(Bar, new Location(pX, pY));
 	   Bar.setCollisionRectangle(new Point(0, 0), 100,80);
 	   _actors.insert(Bar);
