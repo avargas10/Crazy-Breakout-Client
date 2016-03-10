@@ -11,7 +11,7 @@ public class LevelButton extends Actor implements GGMouseTouchListener
 
   public LevelButton(int level)
   {
-    super("/home/vargas/Documentos/sprites/Level" + level + ".png", 2);
+    super("/home/adrian/Documentos/sprites/Level" + level + ".png", 2);
     this.level = level;
     setMouseTouchImage();
     this.addMouseTouchListener(this, GGMouse.lClick);
