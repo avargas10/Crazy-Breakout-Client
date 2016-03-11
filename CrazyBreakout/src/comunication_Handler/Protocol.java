@@ -64,5 +64,15 @@ public class Protocol {
     	System.out.println("new bar");  	
     }
     
+    public void createBricks(){
+    	int pX = Json_Code_Decode.getInstance().get_Json_IntKey(IConstants.K_posX, _json);
+    	int pY = Json_Code_Decode.getInstance().get_Json_IntKey(IConstants.K_posY, _json);
+    	int width = Json_Code_Decode.getInstance().get_Json_IntKey(IConstants.widthKey, _json);
+    	int heigth = Json_Code_Decode.getInstance().get_Json_IntKey(IConstants.heigthKey, _json);
+    	_game.createBrick(pX, pY,heigth,width);
+    	System.out.println("new brick"); 
+    	
+    }
+    
 
 }

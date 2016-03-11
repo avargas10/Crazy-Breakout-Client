@@ -2,9 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/home/adrian/Descargas/Bibliotecas/aplu5.jar"/>
-	<classpathentry kind="lib" path="/home/adrian/Descargas/Bibliotecas/cr.ac.tec.ce1103.structures.jar"/>
-	<classpathentry kind="lib" path="/home/adrian/Descargas/Bibliotecas/gson-2.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/adrian/Descargas/Bibliotecas/JGameGrid.jar"/>
+	<classpathentry kind="lib" path="/home/vargas/Documentos/Proyectos Estructuras y Algoritmos de datos 1/Bibliotecas/cr.ac.tec.ce1103.structures.jar"/>
+	<classpathentry kind="lib" path="/home/vargas/Documentos/Proyectos Estructuras y Algoritmos de datos 1/Bibliotecas/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/vargas/Documentos/Proyectos Estructuras y Algoritmos de datos 1/Bibliotecas/JGameGrid.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

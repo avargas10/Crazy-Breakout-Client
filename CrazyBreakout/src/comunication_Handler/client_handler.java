@@ -68,4 +68,10 @@ public void newBar(){
 	Gson gson = new Gson();
 	this.write(gson.toJson(json));
 }
+public void newBlocks(){
+	JsonObject json = new JsonObject();
+	Json_Code_Decode.getInstance().addJsonKey(IConstants.functionKey, json , IConstants.f_newBlocks, DataType_References.stringFile);
+	Gson gson = new Gson();
+	this.write(gson.toJson(json));
+}
 }

@@ -265,4 +265,13 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
 	      }
 	    }
   }
+  
+  public void createBrick(int pX, int pY, int pHeigth, int pWidth){
+	  Brick brick = new Brick(pY / 3);
+	  brick.setCollisionRectangle(new Point(0, 0), pWidth, pHeigth);
+      collisionAll(brick, _breakers);
+      addActor(brick, new Location(pX, pY));
+      _bricks.insert(brick);
+  }
+  
 }

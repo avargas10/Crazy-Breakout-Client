@@ -4,7 +4,8 @@ public interface IConstants {
 	public static String f_initGame = "f_initGame";
 	public static String f_newPlayer = "f_newPlayer";
 	public static String f_newBall = "f_newBall";
-	public static String f_newBrick = "f_newBrick";
+	public static String f_newBlock = "f_newBrick";
+	public static String f_newBlocks = "f_newBlocks";
 	public static String functionKey = "K_Function";
 	public static String ipKey= "K_ip";
 	public static String portKey = "K_port";
