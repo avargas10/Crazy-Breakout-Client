@@ -16,7 +16,7 @@ public class Breaker extends Actor
 
   public Breaker(BreakoutGame gg, int pNumber)
   {
-    super("/home/adrian/Documentos/sprites/ball.png",4);
+    super("/home/vargas/Documentos/sprites/ball.png",4);
     this.gg = gg;
     _number = pNumber;
     _ran  = new Random();

@@ -8,7 +8,7 @@ public class Brick extends Actor
 {
   public Brick(int sprite)
   {
-    super("/home/adrian/Documentos/sprites/brickS.png", 4);
+    super("/home/vargas/Documentos/sprites/brickS.png");
     show(sprite);
   }
 }

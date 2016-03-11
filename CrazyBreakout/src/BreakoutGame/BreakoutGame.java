@@ -43,7 +43,7 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
     _actors = new Double_Linked_List();
     _bars = new Double_Linked_List();
     _bricks = new Double_Linked_List();
-    getBg().setBgColor(Color.black);   
+    getBg().setBgColor(Color.green);   
     initGame();
   }
 
@@ -76,7 +76,6 @@ public class BreakoutGame extends GameGrid implements GGMouseListener, GGActorCo
     deleteAll(_bars);
     client_handler.getInstance().newBall();
     client_handler.getInstance().newBar();
-    
     getBg().clear();
     _ballCounter = 0;
     points = 0;
